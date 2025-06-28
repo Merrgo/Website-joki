@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kritik & Saran Merrgo</title>
+  <style>
+    body {
+      background-color: #1c1c2b;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #fbc531;
+    }
+
+    input, textarea {
+      width: 90%;
+      max-width: 500px;
+      margin: 10px auto;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background-color: #2f2f4f;
+      color: white;
+      display: block;
+    }
+
+    button {
+      background-color: #25d366;
+      color: white;
+      font-weight: bold;
+      padding: 14px 30px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #1ebe5d;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📝 Kritik & Saran Merrgo Store</h1>
+  <p>Tinggalkan pesanmu, kami akan baca langsung melalui WhatsApp 📲</p>
+
+  <input type="text" id="nama" placeholder="Nama kamu" required />
+  <textarea id="pesan" placeholder="Tulis kritik atau saranmu di sini..." rows="5" required></textarea>
+
+  <button onclick="kirimWhatsApp()">Kirim via WhatsApp</button>
+
+  <script>
+    function kirimWhatsApp() {
+      const nama = document.getElementById('nama').value.trim();
+      const pesan = document.getElementById('pesan').value.trim();
+
+      if (nama === '' || pesan === '') {
+        alert('Harap isi semua kolom!');
+        return;
+      }
+
+      const text = `Halo admin Merrgo! Saya ${nama} ingin menyampaikan:\n${pesan}`;
+      const encodedText = encodeURIComponent(text);
+      const nomorAdmin = '628985911047'; // Ganti jika nomor admin berbeda
+      const url = `https://wa.me/${nomorAdmin}?text=${encodedText}`;
+
+      window.open(url, '_blank');
+    }
+  </script>
+
+</body>
+</html>
